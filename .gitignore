@@ -1,0 +1,14 @@
+*.joblib
+node_modules/
+__pycache__/
+*.log
+.DS_Store
+.env
+.vscode/
+.idea/
+dist/
+build/
+*.egg-info/
+.ipynb_checkpoints/
+.joblib
+.next/
