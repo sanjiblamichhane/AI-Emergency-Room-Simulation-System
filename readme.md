@@ -22,9 +22,11 @@ The cornerstone of this solution is a powerful **"What-If" Simulation Planner**,
 
 ---
 
-## 🚀 Technology Stack
+## 🚀 System Desgin
 
 This project is a modern monorepo combining a Python backend with a Next.js frontend.
+<img width="1465" height="747" alt="image" src="https://github.com/user-attachments/assets/09c6a118-c0cf-4e47-a8f2-f376aa5ec20d" />
+
 
 ### **Data Preparation** 🧹
 
