@@ -1,6 +1,6 @@
 # 🏥 Meridian ER Operations: From Bottleneck to Breakthrough
 
-
+🎉 This product was submitted to Datathon at East Texas A&M University and won the second prize. 🥈 
 
 This project is a full-stack web application designed to help **Meridian City Hospital's ER** move from reactive problem-solving to proactive, data-driven operational planning. By analyzing historical patient flow and staffing data, we've built a suite of predictive tools and an interactive dashboard that empowers hospital administrators to reduce wait times, optimize staffing, and improve patient satisfaction.
 

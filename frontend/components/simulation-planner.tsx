@@ -1,5 +1,3 @@
-// components/simulation-planner.tsx
-
 "use client"
 
 import { useState } from "react"
@@ -18,11 +16,10 @@ export function SimulationPlanner() {
   const [params, setParams] = useState({
     Visit_Day: "Friday",
     Shift: "Evening",
-    Triage_Level: "Urgent", // Let's add this missing control
+    Triage_Level: "Urgent",
     patient_volume: 40,
     variable_resource: "nurses" as "doctors" | "nurses",
     target_wait_time: 50,
-    // NEW: State for the fixed resource
     fixed_doctors: 4,
     fixed_nurses: 8,
   });
@@ -33,7 +30,6 @@ export function SimulationPlanner() {
   const handleRunSimulation = async () => {
     setIsLoading(true); setRecommendation(null); setSimulationResult(null);
     try {
-      // Construct the payload for the API
       const simPayload = {
         ...params,
         // For the resource that ISN'T varying, send its fixed value for both min and max
@@ -48,7 +44,6 @@ export function SimulationPlanner() {
         setSimulationResult(result);
         const optimal = result.find((r: { predicted_wait: number }) => r.predicted_wait <= params.target_wait_time);
         if (optimal) {
-          // FIX: The recommendation text now correctly uses the target wait time from the state
           setRecommendation(`To achieve a wait time of ${params.target_wait_time} min or less, you need at least ${optimal.resource_count} ${params.variable_resource}.`);
         } else {
           setRecommendation(`The target wait time of ${params.target_wait_time} min was not met. More ${params.variable_resource} may be needed.`);
@@ -64,7 +59,6 @@ export function SimulationPlanner() {
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-      {/* --- CONTROLS PANEL --- */}
       <Card className="lg:col-span-1">
         <CardHeader><CardTitle>Simulation Parameters</CardTitle><CardDescription>Adjust sliders to model different scenarios.</CardDescription></CardHeader>
         <CardContent className="space-y-4">
@@ -75,7 +69,6 @@ export function SimulationPlanner() {
           <div className="space-y-2"><Label>Patient Volume for Shift</Label><Slider value={[params.patient_volume]} onValueChange={([val]) => setParams(p => ({ ...p, patient_volume: val }))} min={20} max={150} step={5} /><div className="text-right text-sm text-muted-foreground">{params.patient_volume} patients</div></div>
           <div className="space-y-2"><Label>Target Wait Time (minutes)</Label><Slider value={[params.target_wait_time]} onValueChange={([val]) => setParams(p => ({ ...p, target_wait_time: val }))} min={10} max={90} step={5} /><div className="text-right text-sm text-muted-foreground">{params.target_wait_time} min</div></div>
           
-          {/* NEW: Conditional Sliders for Fixed Resources */}
           {params.variable_resource === 'nurses' && (
             <div className="space-y-2 pt-2 border-t"><Label>Fixed # of Doctors</Label><Slider value={[params.fixed_doctors]} onValueChange={([val]) => setParams(p => ({ ...p, fixed_doctors: val }))} min={1} max={10} step={1} /><div className="text-right text-sm text-muted-foreground">{params.fixed_doctors} doctors</div></div>
           )}
@@ -88,7 +81,6 @@ export function SimulationPlanner() {
         </CardContent>
       </Card>
 
-      {/* --- RESULTS PANEL --- */}
       <Card className="lg:col-span-2">
         <CardHeader><CardTitle>Simulation Results</CardTitle><CardDescription>Predicted wait time based on the number of {params.variable_resource}.</CardDescription></CardHeader>
         <CardContent>
@@ -97,7 +89,6 @@ export function SimulationPlanner() {
             <>
               <ChartContainer config={{}} className="h-[350px]">
                 <ResponsiveContainer width="100%" height="100%">
-                  {/* FIX: Added right margin to the chart to prevent label cutoff */}
                   <LineChart data={simulationResult} margin={{ top: 5, right: 40, left: 10, bottom: 20 }}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="resource_count" name={variableResourceLabel} type="number" domain={['dataMin', 'dataMax']} label={{ value: variableResourceLabel, position: 'insideBottom', offset: -10 }} />

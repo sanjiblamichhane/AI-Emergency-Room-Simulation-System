@@ -1,11 +1,8 @@
 // ===================================================================================
-// lib/api.ts - FINAL, FEATURE-COMPLETE VERSION
-// ===================================================================================
-// This file contains all the helper functions for communicating with your FastAPI backend.
-// This version includes the missing 'runWaitTimeSimulation' export.
+// This file contains all the helper functions for communicating with FastAPI backend.
 // ===================================================================================
 
-const API_BASE_URL = "http://127.0.0.1:8000";
+const API_BASE_URL = "http://127.0.0.1:8000"; // Change this for production use
 
 // A generic fetch function to handle all API requests and errors
 async function apiFetch(endpoint: string, options: RequestInit = {}) {
@@ -51,7 +48,6 @@ export const getWaitTimePrediction = (data: {
     body: JSON.stringify(data),
   });
 
-// --- THIS IS THE MISSING FUNCTION ---
 export const runWaitTimeSimulation = (simData: any) => 
   apiFetch('/predict/wait_time_simulation', {
     method: 'POST',

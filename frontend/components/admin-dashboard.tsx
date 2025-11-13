@@ -1,15 +1,12 @@
-// components/admin-dashboard.tsx
-
 "use client"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ArrowLeft, BarChart3, Settings, Activity, Star, Bot } from "lucide-react"
-import { SimulationPlanner } from "@/components/simulation-planner" // Import the new component
+import { SimulationPlanner } from "@/components/simulation-planner"
 
 export function AdminDashboard({ onBack }: { onBack: () => void }) {
-  // This component is now much simpler. All complex logic is in SimulationPlanner.
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -60,7 +57,7 @@ export function AdminDashboard({ onBack }: { onBack: () => void }) {
             </Card>
           </TabsContent>
 
-          {/* --- SIMULATION TAB (Now uses the dedicated component) --- */}
+          {/* --- SIMULATION TAB --- */}
           <TabsContent value="simulation">
             <SimulationPlanner />
           </TabsContent>
