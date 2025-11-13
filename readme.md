@@ -6,8 +6,7 @@ This project is a full-stack web application designed to help **Meridian City Ho
 
 The cornerstone of this solution is a powerful **"What-If" Simulation Planner**, allowing management to model different scenarios and receive data-backed staffing recommendations to meet their operational targets.
 
-## Demo
-<iframe width="560" height="315" src="https://www.youtube.com/embed/e9l7RqBmxt0?si=wpWz9d31HxoVJsHq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+🔴👉 [DEMO VIDEO](https://youtu.be/e9l7RqBmxt0?si=mXqvWKdfrLh4fb_x)
 
 ## ✨ Key Features
 
